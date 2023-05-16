@@ -9,11 +9,11 @@ function App() {
             <textarea 
             value={text}
             onChange={changeHandle}/>
-            <h4>Time remaining: {count}</h4>
+            <h4>Time remaining: {}</h4>
             <button onClick={calculateWord}>
                 Start
             </button>
-            <h1>Word count: {}</h1>
+            <h1>Word count: {count}</h1>
         </div>
   );
 }
