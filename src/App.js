@@ -1,12 +1,14 @@
 
 import './App.css';
-import usewordgame from "./Hooks/usewordgame"
+import useWordGame from "./Hooks/Usewordgame"
 function App() {
-  
+  const {text, changeHandle} = useWordGame()
   return (
     <div>
             <h1>How fast do you type?</h1>
-            <textarea />
+            <textarea 
+            value={text}
+            onChange={changeHandle}/>
             <h4>Time remaining: {}</h4>
             <button>
                 Start
