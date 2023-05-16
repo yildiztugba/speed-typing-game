@@ -1,7 +1,8 @@
 
 import './App.css';
-
+import usewordgame from "./Hooks/usewordgame"
 function App() {
+  
   return (
     <div>
             <h1>How fast do you type?</h1>
