@@ -4,7 +4,16 @@ function useWordGame(){
     
     const [text, setText] = useState("")
     const [count, setCount] = useState(0)
-    const [time,setTime] = useState(10)
+    const [timeRemaining,setTimeRemaining] = useState(10)
+
+    useEffect(()=>{
+        if(timeRemaining>0){
+            setTimeout(() => {
+                setTimeRemaining(prev=>prev-1)
+                },1000);
+        }
+           
+    },[timeRemaining])
 
 
     function changeHandle(event){
@@ -21,7 +30,7 @@ function useWordGame(){
     }
   
     return(
-        {text,changeHandle,count,calculateWord,time}
+        {text,changeHandle,count,calculateWord,timeRemaining}
     )
 }
 export default useWordGame
