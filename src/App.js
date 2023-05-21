@@ -8,7 +8,9 @@ function App() {
             <h1>How fast do you type?</h1>
             <textarea 
             value={text}
-            onChange={changeHandle}/>
+            onChange={changeHandle}
+            disabled={!isRunning}
+            />
             <h4>Time remaining: {timeRemaining}</h4>
             <button 
             onClick={startGame}
