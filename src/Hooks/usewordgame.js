@@ -4,6 +4,8 @@ function useWordGame(){
     
     const [text, setText] = useState("")
     const [count, setCount] = useState(0)
+    const [time,setTime] = useState(10)
+
 
     function changeHandle(event){
         const {value} = event.target
@@ -19,7 +21,7 @@ function useWordGame(){
     }
   
     return(
-        {text,changeHandle,count,calculateWord}
+        {text,changeHandle,count,calculateWord,time}
     )
 }
 export default useWordGame
