@@ -10,7 +10,10 @@ function App() {
             value={text}
             onChange={changeHandle}/>
             <h4>Time remaining: {timeRemaining}</h4>
-            <button onClick={startGame}>
+            <button 
+            onClick={startGame}
+            disabled={isRunning ? true : false}
+            >
                 Start
             </button>
             <h1>Word count: {count}</h1>
