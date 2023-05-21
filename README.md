@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Advanced React Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Speed Typing Game
 
-## Available Scripts
+The aim of the game is to automatically receives focus and let the user start typing right away. then the time runs out, the textarea is disabled again and it gives us the number of words we are able to type them in given time.
 
-In the project directory, you can run:
+This project helped me to practice useEffect hook, useState hook, useRef hook and custom hook. 
+## Deployment
 
-### `npm start`
+[https://speedtypinggamewithreact.netlify.app/](https://speedtypinggamewithreact.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
+![Overview](./public/Project8.png)
 
-### `npm test`
+## Tools and Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Advanced React
+  - Custom Hooks
+  - useContext
+  - State, useState
+  - UseEffect, useRef
+  - Form, Input, Button
+  - setTimeout
+  - onChange & onClick
+  - Declarative methods
 
-### `npm run build`
+### Devops
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Netlify
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the app, type `npm start` in the CLI.
 
-### `npm run eject`
+## Sample React code
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Here is a look at how to set up an effect that runs every time the `timeRemaining` or `isTimeRunning` change. The effect will wait 1 second, then decrement the `timeRemaining` by 1. When the time is zero, game will be ended.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+ useEffect(() => {
+        if(isTimeRunning && timeRemaining > 0) {
+            setTimeout(() => {
+                setTimeRemaining(time => time - 1)
+            }, 1000)
+        } else if(timeRemaining === 0) {
+            endGame()
+        }
+    }, [timeRemaining, isTimeRunning])
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```

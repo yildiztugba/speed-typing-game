@@ -43,6 +43,7 @@ function useWordGame(){
         setTimeRemaining(STARTING_TIME)
         inputRef.current.disabled = false
         inputRef.current.focus()
+        setCount(0)
     }
 
     function endGame(){
