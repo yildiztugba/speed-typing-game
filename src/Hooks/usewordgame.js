@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react"
+import {useRef} from 'react'
 
 function useWordGame(){
     const STARTING_TIME = 5
@@ -6,6 +7,7 @@ function useWordGame(){
     const [count, setCount] = useState(0)
     const [timeRemaining,setTimeRemaining] = useState(STARTING_TIME)
     const [isRunning,setIsRunning] = useState(false)
+    const inputRef = useRef(null);
 
     useEffect(()=>{
         if(isRunning && timeRemaining>0){
@@ -39,6 +41,8 @@ function useWordGame(){
         setIsRunning(true)
         setText("")
         setTimeRemaining(STARTING_TIME)
+        inputRef.current.disabled = false
+        inputRef.current.focus()
     }
 
     function endGame(){
@@ -47,7 +51,7 @@ function useWordGame(){
     }
 
     return(
-        {text,changeHandle,count,startGame,timeRemaining,isRunning}
+        {text,changeHandle,count,startGame,timeRemaining,isRunning,inputRef}
     )
 }
 export default useWordGame
