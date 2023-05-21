@@ -1,19 +1,24 @@
 import {useState, useEffect} from "react"
 
 function useWordGame(){
-    
+    const STARTING_TIME = 5
     const [text, setText] = useState("")
     const [count, setCount] = useState(0)
-    const [timeRemaining,setTimeRemaining] = useState(10)
+    const [timeRemaining,setTimeRemaining] = useState(STARTING_TIME)
+    const [isRunning,setIsRunning] = useState(false)
 
     useEffect(()=>{
-        if(timeRemaining>0){
+        if(isRunning && timeRemaining>0){
             setTimeout(() => {
                 setTimeRemaining(prev=>prev-1)
                 },1000);
         }
-           
-    },[timeRemaining])
+        else if (timeRemaining === 0)
+        {
+            endGame()
+        }
+    
+    },[timeRemaining,isRunning])
 
 
     function changeHandle(event){
@@ -23,14 +28,26 @@ function useWordGame(){
     }
 
     function calculateWord(){
+        
         setCount((prev)=>{
-            return text.split(" ").length
+            return text.trim().split(" ").length
         })
-        console.log(count)
+        
     }
-  
+
+    function startGame(){
+        setIsRunning(true)
+        setText("")
+        setTimeRemaining(STARTING_TIME)
+    }
+
+    function endGame(){
+        setIsRunning(false)
+        calculateWord()
+    }
+
     return(
-        {text,changeHandle,count,calculateWord,timeRemaining}
+        {text,changeHandle,count,startGame,timeRemaining,isRunning}
     )
 }
 export default useWordGame
